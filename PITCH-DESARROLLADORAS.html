@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Bay Biz - Propuesta para Desarrolladoras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-oscuro: #0d2137;
+            --azul-medio: #1a3654;
+            --azul-claro: #2a5080;
+            --amarillo: #f5b800;
+            --blanco: #ffffff;
+            --gris-claro: #f7f9fc;
+            --gris: #8896a6;
+            --texto: #1a3654;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--blanco);
+            color: var(--texto);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* SLIDES */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 60px;
+            position: relative;
+        }
+
+        .slide-dark {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            color: var(--blanco);
+        }
+
+        .slide-light {
+            background: var(--blanco);
+        }
+
+        .slide-gray {
+            background: var(--gris-claro);
+        }
+
+        .content {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* LOGO */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            color: var(--blanco);
+            text-transform: uppercase;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: var(--azul-oscuro);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--azul-medio);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--amarillo);
+        }
+
+        .text-center { text-align: center; }
+
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .card {
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--azul-medio);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .card-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: var(--azul-medio);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .card h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--gris);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* QUOTE */
+        .quote {
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--azul-medio);
+            text-align: center;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            border-left: 4px solid var(--amarillo);
+            background: var(--gris-claro);
+        }
+
+        /* PROBLEMS */
+        .problems-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 30px 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--amarillo);
+        }
+
+        .problem-item p {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        /* COMPARISON */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 30px;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .comparison-col {
+            padding: 40px;
+            border-radius: 16px;
+        }
+
+        .comparison-before {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-after {
+            background: rgba(245,184,0,0.1);
+            border: 1px solid var(--amarillo);
+        }
+
+        .comparison-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .comparison-arrow svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--amarillo);
+            fill: none;
+        }
+
+        .comparison-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 25px;
+            opacity: 0.7;
+        }
+
+        .comparison-col ul {
+            list-style: none;
+        }
+
+        .comparison-col li {
+            padding: 12px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comparison-before li::before {
+            content: "—";
+            color: var(--gris);
+        }
+
+        .comparison-after li::before {
+            content: "✓";
+            color: var(--amarillo);
+            font-weight: 600;
+        }
+
+        /* STEPS */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .steps::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: 60px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--amarillo), var(--azul-claro));
+        }
+
+        .step {
+            display: flex;
+            gap: 40px;
+            padding: 30px 0;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--azul-oscuro);
+            border: 3px solid var(--amarillo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--amarillo);
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .step-content h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--gris);
+            font-size: 1rem;
+        }
+
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-box {
+            background: var(--gris-claro);
+            padding: 35px;
+            border-radius: 12px;
+            border-left: 4px solid var(--amarillo);
+        }
+
+        .feature-box h4 {
+            color: var(--azul-oscuro);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-box ul {
+            list-style: none;
+        }
+
+        .feature-box li {
+            padding: 6px 0;
+            color: var(--gris);
+            font-size: 0.95rem;
+        }
+
+        .feature-box li::before {
+            content: "•";
+            color: var(--amarillo);
+            margin-right: 10px;
+        }
+
+        /* INVESTORS */
+        .investors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .investor-card {
+            background: var(--blanco);
+            border: 1px solid #e5e9ef;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .investor-card:hover {
+            border-color: var(--amarillo);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .investor-card h4 {
+            color: var(--azul-oscuro);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .investor-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .investor-card li {
+            padding: 8px 0;
+            color: var(--gris);
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f2f5;
+        }
+
+        .investor-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* PRICING */
+        .pricing-box {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            color: var(--blanco);
+            margin: 50px 0;
+        }
+
+        .pricing-box h3 {
+            color: var(--blanco);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .pricing-box p {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        .pricing-box .highlight {
+            font-weight: 500;
+        }
+
+        /* TABLE */
+        .table-minimal {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+
+        .table-minimal th {
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 20px 25px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table-minimal th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+
+        .table-minimal th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+
+        .table-minimal td {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e5e9ef;
+            color: var(--texto);
+        }
+
+        .table-minimal tr:hover td {
+            background: var(--gris-claro);
+        }
+
+        .table-minimal .price {
+            color: var(--amarillo);
+            font-weight: 600;
+        }
+
+        /* PROPOSAL */
+        .proposal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .proposal-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .proposal-card:hover {
+            border-color: var(--amarillo);
+        }
+
+        .proposal-number {
+            width: 50px;
+            height: 50px;
+            background: var(--amarillo);
+            color: var(--azul-oscuro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 auto 25px;
+        }
+
+        .proposal-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .proposal-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 50px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--amarillo);
+            fill: none;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            display: inline-block;
+            background: var(--amarillo);
+            color: var(--azul-oscuro);
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245,184,0,0.3);
+        }
+
+        /* DIVIDER */
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: var(--amarillo);
+            margin: 30px auto;
+        }
+
+        /* SLIDE NUMBER */
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 0.85rem;
+            opacity: 0.4;
+            letter-spacing: 0.1em;
+        }
+
+        /* NAVIGATION */
+        .nav-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gris);
+            font-size: 0.85rem;
+            opacity: 0.6;
+            z-index: 100;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .slide { padding: 60px 30px; }
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.8rem; }
+            .cards-grid, .investors-grid, .proposal-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .comparison { grid-template-columns: 1fr; }
+            .comparison-arrow { transform: rotate(90deg); }
+            .contact-info { flex-direction: column; gap: 20px; }
+        }
+
+        @media print {
+            .slide { min-height: auto; page-break-after: always; padding: 40px; }
+            .nav-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1: PORTADA -->
+<div class="slide slide-dark">
+    <div class="content text-center">
+        <div class="logo-container">
+            <div class="logo">
+                <!-- Logo desde imagen - reemplazar con tu logo real -->
+                <img src="logo-bbb.png" alt="Brick Bay Biz" style="width: 180px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <!-- Fallback SVG si no hay imagen -->
+                    <text x="90" y="50" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="24" font-weight="300" letter-spacing="8">BBB</text>
+                    <circle cx="160" cy="20" r="10" fill="#f5b800"/>
+                </svg>
+            </div>
+            <div class="brand-name">Brick Bay Biz</div>
+        </div>
+
+        <h1>Una buena inversión comienza<br><span class="highlight">sintiéndote seguro</span> al tomarla.</h1>
+
+        <div class="divider"></div>
+
+        <p class="tagline">Propuesta de valor para desarrolladoras inmobiliarias</p>
+    </div>
+    <div class="slide-number">01 / 13</div>
+</div>
+
+<!-- SLIDE 2: QUIÉNES SOMOS -->
+<div class="slide slide-light">
+    <div class="content">
+        <h2 class="text-center">No vendemos. <span class="highlight">Acompañamos.</span></h2>
+
+        <p class="quote">"Recomendamos como lo haría un socio de confianza que conoce el mercado por dentro."</p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                </div>
+                <h3>Curaduría real</h3>
+                <p>Seleccionamos cuidadosamente proyectos por su calidad, trayectoria y proyección.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg>
+                </div>
+                <h3>Seguridad</h3>
+                <p>Trabajamos únicamente con desarrolladoras consolidadas que cumplen procesos estrictos.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3>Acceso personalizado</h3>
+                <p>Acercamos oportunidades diseñadas para cada perfil de inversor.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">02 / 13</div>
+</div>
+
+<!-- SLIDE 3: DÓNDE ESTAMOS HOY -->
+<div class="slide slide-gray">
+    <div class="content">
+        <h2 class="text-center">Dónde estamos hoy</h2>
+        <p class="text-center" style="color: var(--gris); margin-bottom: 20px;">Estado actual del proyecto Brick Bay Biz</p>
+        <div class="divider"></div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number" style="background: var(--amarillo); border-color: var(--amarillo); color: var(--azul-oscuro);">✓</div>
+                <div class="step-content">
+                    <h3>Captación de leads activa</h3>
+                    <p>Estamos captando leads microtargeteados vía <strong>LinkedIn Sales Navigator</strong> hacia los 3 perfiles de inversor: Individuales HNW, Family Offices e Institucionales.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number" style="background: var(--amarillo); border-color: var(--amarillo); color: var(--azul-oscuro);">✓</div>
+                <div class="step-content">
+                    <h3>CRM operativo</h3>
+                    <p>Todos los leads se almacenan y enriquecen en nuestro <strong>CRM propietario</strong>, con perfilado de capacidad de inversión y preferencias.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number" style="background: var(--azul-medio); border-color: var(--amarillo); color: var(--amarillo);">⚙</div>
+                <div class="step-content">
+                    <h3>Plataforma en desarrollo</h3>
+                    <p>Estamos construyendo la <strong>app de generación de valor</strong> para inversores, con información curada y matchscoring con AI.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-box" style="margin-top: 40px;">
+            <h3>Próximo paso clave</h3>
+            <p>Relevar proyectos de desarrolladoras para tener <span class="highlight">inventario de calidad</span> que ofrecer a nuestra base de inversores.</p>
+        </div>
+    </div>
+    <div class="slide-number">03 / 13</div>
+</div>
+
+<!-- SLIDE 4: CAPTACIÓN INTELIGENTE -->
+<div class="slide slide-dark">
+    <div class="content">
+        <h2 style="color: white;" class="text-center">Captación inteligente de inversores</h2>
+        <p class="text-center" style="opacity: 0.8; margin-bottom: 20px;">Llegamos a los inversores correctos con precisión quirúrgica</p>
+        <div class="divider"></div>
+
+        <div class="cards-grid">
+            <div class="card" style="background: rgba(255,255,255,0.05); border-radius: 16px;">
+                <div class="card-icon" style="border-color: var(--amarillo);">
+                    <svg viewBox="0 0 24 24" style="stroke: var(--amarillo);"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <h3 style="color: white;">LinkedIn Sales Navigator</h3>
+                <p style="color: rgba(255,255,255,0.7);">Identificamos perfiles de alto patrimonio con interés en real estate. Microtargeting basado en comportamiento e intereses.</p>
+            </div>
+            <div class="card" style="background: rgba(255,255,255,0.05); border-radius: 16px;">
+                <div class="card-icon" style="border-color: var(--amarillo);">
+                    <svg viewBox="0 0 24 24" style="stroke: var(--amarillo);"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h3 style="color: white;">Outbound Microtargeteado</h3>
+                <p style="color: rgba(255,255,255,0.7);">Campañas personalizadas para cada segmento de inversor. Mensajes relevantes que generan respuestas.</p>
+            </div>
+            <div class="card" style="background: rgba(255,255,255,0.05); border-radius: 16px;">
+                <div class="card-icon" style="border-color: var(--amarillo);">
+                    <svg viewBox="0 0 24 24" style="stroke: var(--amarillo);"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 style="color: white;">CRM Propietario</h3>
+                <p style="color: rgba(255,255,255,0.7);">Almacenamos y enriquecemos cada lead. Historial completo de interacciones y preferencias de inversión.</p>
+            </div>
+        </div>
+
+        <p class="text-center" style="margin-top: 50px; font-size: 1.2rem; opacity: 0.9;">
+            No esperamos que los inversores nos encuentren. <span class="highlight">Los vamos a buscar.</span>
+        </p>
+    </div>
+    <div class="slide-number">04 / 13</div>
+</div>
+
+<!-- SLIDE 5: AI MATCHSCORING -->
+<div class="slide slide-light">
+    <div class="content">
+        <h2 class="text-center">AI Matchscoring</h2>
+        <p class="text-center" style="color: var(--gris); margin-bottom: 20px;">Inteligencia artificial que conecta proyectos con inversores ideales</p>
+        <div class="divider"></div>
+
+        <div class="features-grid">
+            <div class="feature-box" style="border-left-color: #10b981;">
+                <h4 style="color: #10b981;">🧠 Análisis de perfil</h4>
+                <ul>
+                    <li>Historial de inversiones previas</li>
+                    <li>Ticket promedio y preferencias</li>
+                    <li>Tolerancia al riesgo</li>
+                    <li>Horizonte de inversión</li>
+                </ul>
+            </div>
+            <div class="feature-box" style="border-left-color: #3b82f6;">
+                <h4 style="color: #3b82f6;">📊 Variables del proyecto</h4>
+                <ul>
+                    <li>Tipo de desarrollo y ubicación</li>
+                    <li>Rentabilidad proyectada</li>
+                    <li>Plazo de entrega</li>
+                    <li>Track record de la desarrolladora</li>
+                </ul>
+            </div>
+            <div class="feature-box" style="border-left-color: #f5b800;">
+                <h4 style="color: #f5b800;">⚡ Match Score</h4>
+                <ul>
+                    <li>Puntuación de compatibilidad 0-100</li>
+                    <li>Ranking de proyectos por inversor</li>
+                    <li>Alertas automáticas de matches</li>
+                    <li>Recomendaciones personalizadas</li>
+                </ul>
+            </div>
+            <div class="feature-box" style="border-left-color: #8b5cf6;">
+                <h4 style="color: #8b5cf6;">🎯 Resultados</h4>
+                <ul>
+                    <li>Mayor tasa de conversión</li>
+                    <li>Menos tiempo en reuniones improductivas</li>
+                    <li>Inversores más satisfechos</li>
+                    <li>Deals cerrados más rápido</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pricing-box" style="margin-top: 40px;">
+            <h3>El poder del AI matching</h3>
+            <p>"Cada proyecto se muestra a inversores con <span class="highlight">alta probabilidad de interés real</span>"</p>
+        </div>
+    </div>
+    <div class="slide-number">05 / 13</div>
+</div>
+
+<!-- SLIDE 6: EL PROBLEMA -->
+<div class="slide slide-dark">
+    <div class="content">
+        <h2 style="color: white;" class="text-center">¿Te resulta familiar?</h2>
+        <div class="divider"></div>
+
+        <div class="problems-list">
+            <div class="problem-item">
+                <p>"Tengo proyectos increíbles pero me cuesta encontrar inversores serios"</p>
+            </div>
+            <div class="problem-item">
+                <p>"Paso semanas reuniéndome con gente que al final no tiene el capital"</p>
+            </div>
+            <div class="problem-item">
+                <p>"Mis proyectos se retrasan porque el fondeo tarda demasiado"</p>
+            </div>
+            <div class="problem-item">
+                <p>"No tengo forma de llegar a inversores que no conozco personalmente"</p>
+            </div>
+        </div>
+
+        <p class="text-center" style="margin-top: 50px; font-size: 1.4rem; font-weight: 300;">
+            El fondeo es el <span class="highlight">cuello de botella #1</span> de las desarrolladoras.
+        </p>
+    </div>
+    <div class="slide-number">06 / 13</div>
+</div>
+
+<!-- SLIDE 7: LA SOLUCIÓN -->
+<div class="slide slide-dark">
+    <div class="content">
+        <h2 style="color: white;" class="text-center">La solución: Brick Bay Biz</h2>
+        <div class="divider"></div>
+
+        <div class="comparison">
+            <div class="comparison-col comparison-before">
+                <h4>Antes</h4>
+                <ul>
+                    <li>Buscás inversores uno a uno</li>
+                    <li>Reuniones sin fin con no calificados</li>
+                    <li>Presentaciones manuales repetitivas</li>
+                    <li>Sin métricas de interés</li>
+                    <li>Dependés de tu red de contactos</li>
+                </ul>
+            </div>
+            <div class="comparison-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="2"/></svg>
+            </div>
+            <div class="comparison-col comparison-after">
+                <h4>Con Brick Bay Biz</h4>
+                <ul>
+                    <li>Inversores verificados te contactan</li>
+                    <li>Solo leads pre-calificados</li>
+                    <li>Showcase profesional automatizado</li>
+                    <li>Dashboard con analytics en tiempo real</li>
+                    <li>Acceso a red de +500 inversores</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">07 / 13</div>
+</div>
+
+<!-- SLIDE 8: CÓMO FUNCIONA -->
+<div class="slide slide-light">
+    <div class="content">
+        <h2 class="text-center">Cómo funciona</h2>
+        <div class="divider"></div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Registrá tu empresa</h3>
+                    <p>Verificamos tu track record y creamos tu perfil profesional con badge de desarrolladora verificada.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Subí tus proyectos</h3>
+                    <p>Cargá fotos, renders, planos y detalles financieros. Nosotros armamos un showcase profesional.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Recibí inversores calificados</h3>
+                    <p>Nuestro sistema conecta tu proyecto con inversores que coinciden con tu perfil de búsqueda.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Cerrá deals</h3>
+                    <p>Gestioná las conversaciones desde la plataforma y cerrá operaciones de forma simple.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">08 / 13</div>
+</div>
+
+<!-- SLIDE 9: FEATURES -->
+<div class="slide slide-gray">
+    <div class="content">
+        <h2 class="text-center">Qué incluye la plataforma</h2>
+        <div class="divider"></div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <h4>🏢 Perfil de empresa verificado</h4>
+                <ul>
+                    <li>Track record visible y validado</li>
+                    <li>Badge de desarrolladora verificada</li>
+                    <li>Reviews de inversores anteriores</li>
+                    <li>Documentación respaldatoria</li>
+                </ul>
+            </div>
+            <div class="feature-box">
+                <h4>🏗️ Showcase de proyectos</h4>
+                <ul>
+                    <li>Galería de imágenes y renders HD</li>
+                    <li>Video tours y recorridos 360°</li>
+                    <li>Planos descargables</li>
+                    <li>Información financiera detallada</li>
+                </ul>
+            </div>
+            <div class="feature-box">
+                <h4>📊 Dashboard de analytics</h4>
+                <ul>
+                    <li>Vistas por proyecto en tiempo real</li>
+                    <li>Interés por tipo de unidad</li>
+                    <li>Origen y perfil de inversores</li>
+                    <li>Comparación con mercado</li>
+                </ul>
+            </div>
+            <div class="feature-box">
+                <h4>📋 Gestión de leads</h4>
+                <ul>
+                    <li>Inbox centralizado</li>
+                    <li>Calificación automática de leads</li>
+                    <li>Seguimiento de conversaciones</li>
+                    <li>Pipeline de deals visual</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">09 / 13</div>
+</div>
+
+<!-- SLIDE 10: INVERSORES -->
+<div class="slide slide-light">
+    <div class="content">
+        <h2 class="text-center">Nuestros inversores</h2>
+        <p class="text-center" style="color: var(--gris); margin-bottom: 20px;">Todos verificados con proceso de KYC</p>
+        <div class="divider"></div>
+
+        <div class="investors-grid">
+            <div class="investor-card">
+                <h4>👤 Individuales HNW</h4>
+                <ul>
+                    <li><strong>Ticket:</strong> USD 50k - 500k</li>
+                    <li><strong>Perfil:</strong> Buscan renta y apreciación</li>
+                    <li><strong>Interés:</strong> 1-3 unidades por operación</li>
+                </ul>
+            </div>
+            <div class="investor-card">
+                <h4>👨‍👩‍👧‍👦 Family Offices</h4>
+                <ul>
+                    <li><strong>Ticket:</strong> USD 500k - 5M</li>
+                    <li><strong>Perfil:</strong> Diversificación patrimonial</li>
+                    <li><strong>Interés:</strong> 5-20 unidades o pisos completos</li>
+                </ul>
+            </div>
+            <div class="investor-card">
+                <h4>🏛️ Institucionales</h4>
+                <ul>
+                    <li><strong>Ticket:</strong> USD 1M+</li>
+                    <li><strong>Perfil:</strong> Co-inversión en desarrollos</li>
+                    <li><strong>Interés:</strong> Proyectos completos</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-center" style="margin-top: 40px; color: var(--azul-medio);">
+            ✓ Identidad confirmada &nbsp;&nbsp;•&nbsp;&nbsp; ✓ Capacidad de inversión validada &nbsp;&nbsp;•&nbsp;&nbsp; ✓ Perfil declarado
+        </p>
+    </div>
+    <div class="slide-number">10 / 13</div>
+</div>
+
+<!-- SLIDE 11: MODELO COMERCIAL -->
+<div class="slide slide-light">
+    <div class="content">
+        <h2 class="text-center">Modelo comercial</h2>
+        <div class="divider"></div>
+
+        <div class="pricing-box">
+            <h3>Nuestra filosofía</h3>
+            <p>"Si vos <span class="highlight">no cerrás deals</span>, nosotros no cobramos."</p>
+        </div>
+
+        <table class="table-minimal">
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Costo mensual</th>
+                    <th>Comisión por deal</th>
+                    <th>Incluye</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Starter</strong></td>
+                    <td class="price">Gratis</td>
+                    <td>2.5%</td>
+                    <td>1 proyecto activo, funciones básicas</td>
+                </tr>
+                <tr>
+                    <td><strong>Professional</strong></td>
+                    <td>A convenir</td>
+                    <td>1.5%</td>
+                    <td>5 proyectos, analytics avanzado, destacado</td>
+                </tr>
+                <tr>
+                    <td><strong>Enterprise</strong></td>
+                    <td>A convenir</td>
+                    <td>1%</td>
+                    <td>Proyectos ilimitados, API, account manager</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="text-center" style="color: var(--gris); margin-top: 30px;">
+            Solo cobramos comisión cuando se cierra efectivamente una operación con un inversor de nuestra plataforma.
+        </p>
+    </div>
+    <div class="slide-number">11 / 13</div>
+</div>
+
+<!-- SLIDE 12: PROPUESTA -->
+<div class="slide slide-dark">
+    <div class="content">
+        <h2 style="color: white;" class="text-center">Propuesta para tu empresa</h2>
+        <div class="divider"></div>
+
+        <div class="proposal-grid">
+            <div class="proposal-card">
+                <div class="proposal-number">1</div>
+                <h4>Piloto gratuito</h4>
+                <p>Comenzá con 2-3 proyectos durante 3 meses. Sin costo fijo, solo comisión si hay éxito.</p>
+            </div>
+            <div class="proposal-card">
+                <div class="proposal-number">2</div>
+                <h4>Onboarding prioritario</h4>
+                <p>Setup de perfil con nuestro equipo. Producción profesional de contenido incluida.</p>
+            </div>
+            <div class="proposal-card">
+                <div class="proposal-number">3</div>
+                <h4>Acceso early adopter</h4>
+                <p>Input directo en desarrollo de features. Condiciones preferenciales permanentes.</p>
+            </div>
+        </div>
+
+        <p class="text-center" style="margin-top: 50px; font-size: 1.2rem; opacity: 0.9;">
+            Queremos construir esta plataforma <span class="highlight">junto a desarrolladoras líderes</span> como ustedes.
+        </p>
+    </div>
+    <div class="slide-number">12 / 13</div>
+</div>
+
+<!-- SLIDE 13: CONTACTO -->
+<div class="slide slide-dark contact-section">
+    <div class="content">
+        <div class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 75 L25 25 C25 25 25 15 40 15 L55 15 C70 15 75 25 75 35 C75 45 70 50 60 50 L45 50" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M45 50 L65 50 C80 50 85 60 85 70 C85 80 75 85 60 85 L25 85" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M75 75 L75 25 C75 25 75 15 90 15 L105 15 C120 15 125 25 125 35 C125 45 120 50 110 50 L95 50" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M95 50 L115 50 C130 50 135 60 135 70 C135 80 125 85 110 85 L75 85" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="25" y1="50" x2="135" y2="50" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="150" cy="20" r="12" fill="#f5b800"/>
+                </svg>
+            </div>
+            <div class="brand-name">Brick Bay Biz</div>
+        </div>
+
+        <h1>¿Empezamos?</h1>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                hola@brickbaybiz.com
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                /company/brickbaybiz
+            </div>
+        </div>
+
+        <button class="cta-btn">Agendar reunión</button>
+
+        <p style="margin-top: 60px; opacity: 0.5; font-size: 0.9rem;">
+            "Una buena inversión comienza sintiéndote seguro al tomarla."
+        </p>
+    </div>
+    <div class="slide-number">13 / 13</div>
+</div>
+
+<div class="nav-hint">
+    ↓ Scrolleá para navegar entre slides
+</div>
+
+</body>
+</html>

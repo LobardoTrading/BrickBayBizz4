@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Bay Biz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-oscuro: #0d2137;
+            --azul-medio: #1a3654;
+            --amarillo: #f5b800;
+            --blanco: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .logo {
+            width: 200px;
+            margin: 0 auto 30px;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            color: var(--blanco);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 60px;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--amarillo);
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            color: var(--blanco);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: var(--amarillo);
+        }
+
+        @media (min-width: 600px) {
+            .cards {
+                flex-direction: row;
+            }
+            .card {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 75 L25 25 C25 25 25 15 40 15 L55 15 C70 15 75 25 75 35 C75 45 70 50 60 50 L45 50" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M45 50 L65 50 C80 50 85 60 85 70 C85 80 75 85 60 85 L25 85" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M75 75 L75 25 C75 25 75 15 90 15 L105 15 C120 15 125 25 125 35 C125 45 120 50 110 50 L95 50" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M95 50 L115 50 C130 50 135 60 135 70 C135 80 125 85 110 85 L75 85" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="25" y1="50" x2="135" y2="50" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="150" cy="20" r="12" fill="#f5b800"/>
+            </svg>
+        </div>
+
+        <h1 class="brand-name">Brick Bay Biz</h1>
+        <p class="tagline">Una buena inversión comienza <span class="highlight">sintiéndote seguro</span> al tomarla.</p>
+
+        <div class="cards">
+            <a href="PITCH-DESARROLLADORAS.html" class="card">
+                <div class="icon">📊</div>
+                <h3>Propuesta de Valor</h3>
+                <p>Presentación para desarrolladoras inmobiliarias</p>
+            </a>
+            <a href="FORMULARIO-RELEVAMIENTO.html" class="card">
+                <div class="icon">📝</div>
+                <h3>Relevamiento</h3>
+                <p>Formulario de información de proyectos</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

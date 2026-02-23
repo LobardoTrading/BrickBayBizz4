@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Bay Biz - Relevamiento Desarrolladora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-oscuro: #0d2137;
+            --azul-medio: #1a3654;
+            --azul-claro: #2a5080;
+            --amarillo: #f5b800;
+            --blanco: #ffffff;
+            --gris-claro: #f7f9fc;
+            --gris: #8896a6;
+            --gris-borde: #e1e5eb;
+            --texto: #1a3654;
+            --verde: #10b981;
+            --rojo: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gris-claro);
+            color: var(--texto);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            color: var(--blanco);
+            padding: 40px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-small {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-small svg {
+            width: 50px;
+            height: 35px;
+        }
+
+        .logo-small span {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            background: var(--blanco);
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--gris-borde);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .progress-bar {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .progress-bar::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gris-borde);
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--blanco);
+            border: 2px solid var(--gris-borde);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gris);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .progress-dot {
+            background: var(--amarillo);
+            border-color: var(--amarillo);
+            color: var(--azul-oscuro);
+        }
+
+        .progress-step.completed .progress-dot {
+            background: var(--verde);
+            border-color: var(--verde);
+            color: var(--blanco);
+        }
+
+        .progress-label {
+            font-size: 0.75rem;
+            color: var(--gris);
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .progress-step.active .progress-label {
+            color: var(--azul-oscuro);
+            font-weight: 500;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* SECTIONS */
+        .section {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--gris-borde);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gris-claro);
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--azul-oscuro);
+            margin-bottom: 4px;
+        }
+
+        .section-title p {
+            font-size: 0.9rem;
+            color: var(--gris);
+        }
+
+        /* FORM ELEMENTS */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-row-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--texto);
+            margin-bottom: 8px;
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--amarillo);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gris-borde);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--texto);
+            background: var(--blanco);
+            transition: all 0.2s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--amarillo);
+            box-shadow: 0 0 0 3px rgba(245,184,0,0.1);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--gris);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238896a6' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 45px;
+        }
+
+        /* CHECKBOX & RADIO */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--gris-claro);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-item:hover,
+        .radio-item:hover {
+            border-color: var(--gris-borde);
+        }
+
+        .checkbox-item.checked,
+        .radio-item.checked {
+            background: rgba(245,184,0,0.1);
+            border-color: var(--amarillo);
+        }
+
+        .checkbox-item input,
+        .radio-item input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--amarillo);
+        }
+
+        .checkbox-item span,
+        .radio-item span {
+            font-size: 0.95rem;
+            color: var(--texto);
+        }
+
+        /* TABLE */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        th:first-child { border-radius: 10px 0 0 0; }
+        th:last-child { border-radius: 0 10px 0 0; }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gris-borde);
+            vertical-align: middle;
+        }
+
+        td input {
+            border: none;
+            background: transparent;
+            padding: 8px 0;
+            width: 100%;
+        }
+
+        td input:focus {
+            box-shadow: none;
+            border-bottom: 2px solid var(--amarillo);
+        }
+
+        tr:hover td {
+            background: var(--gris-claro);
+        }
+
+        /* RATING */
+        .rating-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .rating-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--gris-borde);
+            border-radius: 8px;
+            background: var(--blanco);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gris);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rating-btn:hover {
+            border-color: var(--amarillo);
+            color: var(--amarillo);
+        }
+
+        .rating-btn.selected {
+            background: var(--amarillo);
+            border-color: var(--amarillo);
+            color: var(--azul-oscuro);
+        }
+
+        /* CARDS MINI */
+        .info-card {
+            background: linear-gradient(135deg, rgba(245,184,0,0.1), rgba(245,184,0,0.05));
+            border: 1px solid rgba(245,184,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .info-card p {
+            color: var(--azul-medio);
+            font-size: 0.95rem;
+        }
+
+        .info-card strong {
+            color: var(--azul-oscuro);
+        }
+
+        /* PROJECT BOX */
+        .project-box {
+            background: linear-gradient(to right, var(--gris-claro), var(--blanco));
+            border: 2px solid var(--gris-borde);
+            border-left: 4px solid var(--amarillo);
+            border-radius: 0 12px 12px 0;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .project-box h3 {
+            font-size: 1.1rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-box h3::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--amarillo);
+            border-radius: 50%;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--amarillo);
+            color: var(--azul-oscuro);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245,184,0,0.3);
+        }
+
+        .btn-secondary {
+            background: var(--blanco);
+            color: var(--azul-medio);
+            border: 2px solid var(--gris-borde);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--azul-medio);
+        }
+
+        .btn-add {
+            background: var(--gris-claro);
+            color: var(--azul-medio);
+            border: 2px dashed var(--gris-borde);
+            width: 100%;
+            padding: 20px;
+        }
+
+        .btn-add:hover {
+            border-color: var(--amarillo);
+            background: rgba(245,184,0,0.05);
+        }
+
+        /* ACTION BAR */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-top: 1px solid var(--gris-borde);
+            margin-top: 30px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transition: all 0.2s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .form-row, .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 25px;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .progress-container {
+                display: none;
+            }
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .print-btn, .progress-container { display: none; }
+            .section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            body { background: white; }
+            .header { position: relative; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-content">
+        <div class="logo-small">
+            <svg viewBox="0 0 200 100" fill="none">
+                <path d="M25 75 L25 25 C25 25 25 15 40 15 L55 15 C70 15 75 25 75 35 C75 45 70 50 60 50 L45 50" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M45 50 L65 50 C80 50 85 60 85 70 C85 80 75 85 60 85 L25 85" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M75 75 L75 25 C75 25 75 15 90 15 L105 15 C120 15 125 25 125 35 C125 45 120 50 110 50 L95 50" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M95 50 L115 50 C130 50 135 60 135 70 C135 80 125 85 110 85 L75 85" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="25" y1="50" x2="135" y2="50" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="150" cy="20" r="12" fill="#f5b800"/>
+            </svg>
+            <span>Brick Bay Biz</span>
+        </div>
+        <h1>Formulario de Relevamiento</h1>
+    </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-container">
+    <div class="progress-bar">
+        <div class="progress-step active">
+            <div class="progress-dot">1</div>
+            <span class="progress-label">Empresa</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">2</div>
+            <span class="progress-label">Track Record</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">3</div>
+            <span class="progress-label">Proyecto</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">4</div>
+            <span class="progress-label">Etapa</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">5</div>
+            <span class="progress-label">Comercial</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">6</div>
+            <span class="progress-label">Inversores</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">7</div>
+            <span class="progress-label">Material</span>
+        </div>
+        <div class="progress-step">
+            <div class="progress-dot">8</div>
+            <span class="progress-label">Cierre</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- FORMULARIO PRINCIPAL -->
+    <form id="relevamiento-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Access Key - REEMPLAZAR CON TU KEY -->
+        <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI">
+        <input type="hidden" name="subject" value="Nuevo Relevamiento - Brick Bay Biz">
+        <input type="hidden" name="from_name" value="Brick Bay Biz - Relevamiento">
+
+    <!-- SECTION 1: DATOS EMPRESA -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">🏢</div>
+            <div class="section-title">
+                <h2>Datos de la Empresa</h2>
+                <p>Información general de la desarrolladora</p>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label class="required">Razón Social</label>
+                <input type="text" name="razon_social" placeholder="Nombre legal de la empresa" required>
+            </div>
+            <div class="form-group">
+                <label class="required">Nombre Comercial / Marca</label>
+                <input type="text" name="nombre_comercial" placeholder="Nombre con el que operan" required>
+            </div>
+        </div>
+
+        <div class="form-row form-row-3">
+            <div class="form-group">
+                <label>CUIT</label>
+                <input type="text" name="cuit" placeholder="XX-XXXXXXXX-X">
+            </div>
+            <div class="form-group">
+                <label>Año de fundación</label>
+                <input type="number" name="anio_fundacion" placeholder="2010">
+            </div>
+            <div class="form-group">
+                <label>Sitio Web</label>
+                <input type="url" name="sitio_web" placeholder="www.ejemplo.com">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>LinkedIn</label>
+                <input type="url" name="linkedin" placeholder="linkedin.com/company/...">
+            </div>
+            <div class="form-group">
+                <label>Instagram</label>
+                <input type="text" name="instagram" placeholder="@usuario">
+            </div>
+        </div>
+
+        <h3 style="margin: 30px 0 20px; color: var(--azul-oscuro); font-size: 1.1rem;">Contacto Principal</h3>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label class="required">Nombre completo</label>
+                <input type="text" name="contacto_nombre" placeholder="Juan Pérez" required>
+            </div>
+            <div class="form-group">
+                <label>Cargo</label>
+                <input type="text" name="contacto_cargo" placeholder="Director Comercial">
+            </div>
+        </div>
+
+        <div class="form-row form-row-3">
+            <div class="form-group">
+                <label class="required">Email</label>
+                <input type="email" name="contacto_email" placeholder="juan@empresa.com" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" name="contacto_telefono" placeholder="+54 11 ...">
+            </div>
+            <div class="form-group">
+                <label>WhatsApp</label>
+                <input type="tel" name="contacto_whatsapp" placeholder="+54 11 ...">
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: TRACK RECORD -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">🏆</div>
+            <div class="section-title">
+                <h2>Track Record</h2>
+                <p>Experiencia y trayectoria de la desarrolladora</p>
+            </div>
+        </div>
+
+        <div class="form-row form-row-3">
+            <div class="form-group">
+                <label>Años en el mercado</label>
+                <input type="number" placeholder="15">
+            </div>
+            <div class="form-group">
+                <label>Proyectos entregados</label>
+                <input type="number" placeholder="25">
+            </div>
+            <div class="form-group">
+                <label>Proyectos en curso</label>
+                <input type="number" placeholder="5">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>M² totales desarrollados</label>
+                <input type="text" placeholder="150.000 m²">
+            </div>
+            <div class="form-group">
+                <label>Unidades entregadas</label>
+                <input type="number" placeholder="500">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tipos de desarrollos realizados</label>
+            <div class="checkbox-grid">
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>Residencial - Edificios</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>Residencial - Casas</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>Residencial - PHs</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>Comercial - Locales</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>Oficinas</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>Mixto</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Zonas de operación</label>
+            <div class="checkbox-grid">
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>CABA Norte</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>CABA Centro</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>CABA Sur</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>GBA Norte</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>GBA Oeste</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox">
+                    <span>GBA Sur</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: PROYECTOS - INFORMACIÓN GENERAL -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">🏗️</div>
+            <div class="section-title">
+                <h2>Proyectos - Información General</h2>
+                <p>Datos básicos del desarrollo</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <p><strong>Completá esta sección para cada proyecto</strong> que quieran publicar en Brick Bay Biz. Esta información nos permite armar el showcase y matching con inversores.</p>
+        </div>
+
+        <div class="project-box">
+            <h3>Proyecto 1 - Datos Básicos</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="required">Nombre del proyecto</label>
+                    <input type="text" name="proyecto_nombre" placeholder="Torre Palermo Green" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Dirección exacta</label>
+                    <input type="text" name="proyecto_direccion" placeholder="Av. Santa Fe 3200" required>
+                </div>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label class="required">Barrio</label>
+                    <input type="text" name="proyecto_barrio" placeholder="Palermo" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Ciudad</label>
+                    <input type="text" name="proyecto_ciudad" placeholder="CABA" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Tipo de desarrollo</label>
+                    <select name="proyecto_tipo" required>
+                        <option value="">Seleccionar...</option>
+                        <option>Residencial - Edificio</option>
+                        <option>Residencial - Casas/Townhouses</option>
+                        <option>Residencial - PHs</option>
+                        <option>Comercial - Locales</option>
+                        <option>Oficinas</option>
+                        <option>Mixto</option>
+                        <option>Hotel/Apart</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label class="required">Cantidad total de unidades</label>
+                    <input type="number" placeholder="45">
+                </div>
+                <div class="form-group">
+                    <label>M² totales del terreno</label>
+                    <input type="text" placeholder="1.200 m²">
+                </div>
+                <div class="form-group">
+                    <label>M² vendibles totales</label>
+                    <input type="text" placeholder="3.500 m²">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3B: ETAPA DEL PROYECTO -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">📍</div>
+            <div class="section-title">
+                <h2>Etapa del Proyecto</h2>
+                <p>Estado actual y cronograma</p>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <h3>Estado y Timeline</h3>
+
+            <div class="form-group">
+                <label class="required">Etapa actual del proyecto</label>
+                <div class="checkbox-grid">
+                    <label class="radio-item"><input type="radio" name="etapa"><span>Pre-desarrollo (tierra sin proyecto)</span></label>
+                    <label class="radio-item"><input type="radio" name="etapa"><span>Pre-venta (planos aprobados, sin inicio obra)</span></label>
+                    <label class="radio-item"><input type="radio" name="etapa"><span>Pozo (obra iniciada, &lt;30% avance)</span></label>
+                    <label class="radio-item"><input type="radio" name="etapa"><span>En construcción (30-80% avance)</span></label>
+                    <label class="radio-item"><input type="radio" name="etapa"><span>Terminación (>80% avance)</span></label>
+                    <label class="radio-item"><input type="radio" name="etapa"><span>Entregado (escriturando)</span></label>
+                </div>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label>% de avance de obra</label>
+                    <input type="text" placeholder="45%">
+                </div>
+                <div class="form-group">
+                    <label>Fecha inicio de obra</label>
+                    <input type="text" placeholder="Marzo 2024">
+                </div>
+                <div class="form-group">
+                    <label class="required">Fecha estimada de entrega</label>
+                    <input type="text" placeholder="Diciembre 2026">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Estado de permisos y documentación</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox"><span>Planos aprobados</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Permiso de construcción</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Estudio de suelo</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Factibilidad de servicios</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Fideicomiso constituido</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Seguro de caución</span></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3C: COMERCIALIZACIÓN DEL PROYECTO -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <div class="section-title">
+                <h2>Estado Comercial del Proyecto</h2>
+                <p>Unidades, precios y ventas</p>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <h3>Inventario y Disponibilidad</h3>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label class="required">Unidades totales</label>
+                    <input type="number" placeholder="45">
+                </div>
+                <div class="form-group">
+                    <label class="required">Unidades vendidas</label>
+                    <input type="number" placeholder="18">
+                </div>
+                <div class="form-group">
+                    <label>Unidades reservadas</label>
+                    <input type="number" placeholder="5">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="required">Unidades disponibles para inversores</label>
+                    <input type="number" placeholder="22">
+                </div>
+                <div class="form-group">
+                    <label>% vendido del proyecto</label>
+                    <input type="text" placeholder="40%">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Tipologías Disponibles</h3>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipología</th>
+                            <th>M²</th>
+                            <th>Precio USD</th>
+                            <th>Disponibles</th>
+                            <th>Orientación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="Monoambiente"></td>
+                            <td><input type="text" placeholder="35"></td>
+                            <td><input type="text" placeholder="85.000"></td>
+                            <td><input type="text" placeholder="8"></td>
+                            <td><input type="text" placeholder="Norte"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="1 dormitorio"></td>
+                            <td><input type="text" placeholder="45"></td>
+                            <td><input type="text" placeholder="110.000"></td>
+                            <td><input type="text" placeholder="6"></td>
+                            <td><input type="text" placeholder="NE"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="2 dormitorios"></td>
+                            <td><input type="text" placeholder="65"></td>
+                            <td><input type="text" placeholder="165.000"></td>
+                            <td><input type="text" placeholder="5"></td>
+                            <td><input type="text" placeholder="NO"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="3 dormitorios"></td>
+                            <td><input type="text" placeholder="90"></td>
+                            <td><input type="text" placeholder="230.000"></td>
+                            <td><input type="text" placeholder="3"></td>
+                            <td><input type="text" placeholder="Norte"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 30px;">Esquema de Pagos</h3>
+
+            <div class="form-group">
+                <label>Formas de pago disponibles</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox"><span>Contado (100%)</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Anticipo + cuotas en pesos</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Anticipo + cuotas en USD</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Plan de financiación propio</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Permuta (acepta propiedades)</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Crédito hipotecario</span></label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Detalle del esquema de pago principal</label>
+                    <textarea placeholder="Ej: 30% anticipo + 36 cuotas en pesos ajustadas por CAC + 20% contra posesión"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label>Descuento por pago contado</label>
+                    <input type="text" placeholder="10%">
+                </div>
+                <div class="form-group">
+                    <label>Anticipo mínimo requerido</label>
+                    <input type="text" placeholder="30%">
+                </div>
+                <div class="form-group">
+                    <label>Comisión inmobiliaria</label>
+                    <input type="text" placeholder="3% + IVA">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3D: INFORMACIÓN PARA INVERSORES -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <div class="section-title">
+                <h2>Información para Inversores</h2>
+                <p>Datos clave para el AI Matchscoring</p>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <h3>Métricas de Inversión</h3>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label>Ticket mínimo USD</label>
+                    <input type="text" placeholder="85.000">
+                </div>
+                <div class="form-group">
+                    <label>Ticket promedio USD</label>
+                    <input type="text" placeholder="140.000">
+                </div>
+                <div class="form-group">
+                    <label>Rentabilidad proyectada anual</label>
+                    <input type="text" placeholder="8-12%">
+                </div>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label>Precio USD/m² actual</label>
+                    <input type="text" placeholder="2.500">
+                </div>
+                <div class="form-group">
+                    <label>Precio USD/m² zona (comparables)</label>
+                    <input type="text" placeholder="3.200">
+                </div>
+                <div class="form-group">
+                    <label>Upside esperado a entrega</label>
+                    <input type="text" placeholder="25-30%">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Perfil de inversor ideal</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox"><span>Busca renta (alquiler)</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Busca plusvalía (reventa)</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Resguardo de capital</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Diversificación</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Inversión familiar/herencia</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Portfolio institucional</span></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Ventajas competitivas del proyecto (para destacar)</label>
+                <textarea placeholder="Ubicación premium, amenities únicos, desarrolladora reconocida, precio por debajo de mercado, etc."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3E: MATERIAL DISPONIBLE -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">📸</div>
+            <div class="section-title">
+                <h2>Material Disponible para Campaña</h2>
+                <p>Recursos gráficos y documentación</p>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <h3>Material Visual</h3>
+
+            <div class="form-group">
+                <label>¿Qué material tienen disponible actualmente?</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox"><span>Renders exteriores</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Renders interiores</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Planos de plantas</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Planos de unidades</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Video render/recorrido 3D</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Fotos de avance de obra</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Fotos showroom/piloto</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Drone/aéreas</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Recorrido virtual 360°</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Brochure/catálogo PDF</span></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Calidad del material visual (1-10)</label>
+                <div class="rating-group">
+                    <button class="rating-btn" onclick="selectRating(this, 1)">1</button>
+                    <button class="rating-btn" onclick="selectRating(this, 2)">2</button>
+                    <button class="rating-btn" onclick="selectRating(this, 3)">3</button>
+                    <button class="rating-btn" onclick="selectRating(this, 4)">4</button>
+                    <button class="rating-btn" onclick="selectRating(this, 5)">5</button>
+                    <button class="rating-btn" onclick="selectRating(this, 6)">6</button>
+                    <button class="rating-btn" onclick="selectRating(this, 7)">7</button>
+                    <button class="rating-btn" onclick="selectRating(this, 8)">8</button>
+                    <button class="rating-btn" onclick="selectRating(this, 9)">9</button>
+                    <button class="rating-btn" onclick="selectRating(this, 10)">10</button>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Documentación para Due Diligence</h3>
+
+            <div class="form-group">
+                <label>¿Qué documentos pueden compartir con inversores?</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox"><span>Escritura del terreno</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Planos municipales aprobados</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Permiso de obra</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Reglamento de copropiedad</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Contrato de fideicomiso</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Póliza de seguro</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Estados financieros del proyecto</span></label>
+                    <label class="checkbox-item"><input type="checkbox"><span>Cronograma de obra detallado</span></label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Link a carpeta con material (Drive/Dropbox)</label>
+                    <input type="url" placeholder="https://drive.google.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Contacto para solicitar material adicional</label>
+                    <input type="text" placeholder="Nombre y email">
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-add">
+            + Agregar otro proyecto
+        </button>
+    </div>
+
+    <!-- SECTION 4: COMERCIALIZACION -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <div class="section-title">
+                <h2>Comercialización Actual</h2>
+                <p>Cómo venden hoy y qué desafíos tienen</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Canales de venta que utilizan actualmente</label>
+            <div class="checkbox-grid">
+                <label class="checkbox-item"><input type="checkbox"><span>Equipo propio</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Inmobiliarias</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Portales (Zonaprop)</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Redes sociales</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Google Ads</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Referidos</span></label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>% de ventas a inversores (vs. usuario final)</label>
+                <input type="text" placeholder="40%">
+            </div>
+            <div class="form-group">
+                <label>¿Buscan activamente nuevos inversores?</label>
+                <select>
+                    <option value="">Seleccionar...</option>
+                    <option>Sí, activamente</option>
+                    <option>Sí, pero no es prioridad</option>
+                    <option>No actualmente</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>¿Cuál es el mayor desafío en el fondeo de proyectos?</label>
+            <textarea placeholder="Describí los principales obstáculos que enfrentan para conseguir inversores..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>¿Qué frustra del proceso actual de conseguir inversores?</label>
+            <textarea placeholder="Reuniones sin resultado, falta de leads calificados, etc..."></textarea>
+        </div>
+    </div>
+
+    <!-- SECTION 5: INTERES -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">🎯</div>
+            <div class="section-title">
+                <h2>Interés en Brick Bay Biz</h2>
+                <p>Expectativas y próximos pasos</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nivel de interés en la plataforma (1-10)</label>
+            <div class="rating-group">
+                <button class="rating-btn" onclick="selectRating(this, 1)">1</button>
+                <button class="rating-btn" onclick="selectRating(this, 2)">2</button>
+                <button class="rating-btn" onclick="selectRating(this, 3)">3</button>
+                <button class="rating-btn" onclick="selectRating(this, 4)">4</button>
+                <button class="rating-btn" onclick="selectRating(this, 5)">5</button>
+                <button class="rating-btn" onclick="selectRating(this, 6)">6</button>
+                <button class="rating-btn" onclick="selectRating(this, 7)">7</button>
+                <button class="rating-btn" onclick="selectRating(this, 8)">8</button>
+                <button class="rating-btn" onclick="selectRating(this, 9)">9</button>
+                <button class="rating-btn" onclick="selectRating(this, 10)">10</button>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>¿Estarían dispuestos a un piloto?</label>
+                <select>
+                    <option value="">Seleccionar...</option>
+                    <option>Sí, inmediatamente</option>
+                    <option>Sí, en los próximos meses</option>
+                    <option>Tal vez, necesito más info</option>
+                    <option>No por ahora</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Con cuántos proyectos comenzarían?</label>
+                <select>
+                    <option value="">Seleccionar...</option>
+                    <option>1 proyecto</option>
+                    <option>2-3 proyectos</option>
+                    <option>Más de 3</option>
+                    <option>Todos los activos</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Features más valorados (seleccionar los 3 principales)</label>
+            <div class="checkbox-grid">
+                <label class="checkbox-item"><input type="checkbox"><span>Acceso a inversores verificados</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Dashboard con métricas</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Showcase profesional</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Gestión de leads</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Modelo pago por éxito</span></label>
+                <label class="checkbox-item"><input type="checkbox"><span>Soporte dedicado</span></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>¿Hay alguna preocupación o bloqueador?</label>
+            <textarea placeholder="Dudas sobre el modelo, tiempos, competencia, etc..."></textarea>
+        </div>
+    </div>
+
+    <!-- SECTION 6: PROXIMOS PASOS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon">✅</div>
+            <div class="section-title">
+                <h2>Próximos Pasos</h2>
+                <p>Acuerdos y seguimiento</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Acciones acordadas en esta reunión</label>
+            <textarea placeholder="1. Enviar brochures de proyectos&#10;2. Agendar demo de la plataforma&#10;3. ..."></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Fecha tentativa próxima reunión</label>
+                <input type="date">
+            </div>
+            <div class="form-group">
+                <label>Participantes</label>
+                <input type="text" placeholder="Nombres de quienes participarían">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Notas adicionales</label>
+            <textarea placeholder="Cualquier otra información relevante de la reunión..."></textarea>
+        </div>
+
+        <div class="action-bar">
+            <button type="button" class="btn btn-secondary" onclick="window.print()">Imprimir borrador</button>
+            <button type="submit" class="btn btn-primary">Enviar relevamiento</button>
+        </div>
+    </div>
+
+    </form>
+    <!-- FIN FORMULARIO -->
+
+</div>
+
+<div class="footer">
+    <p><strong>Brick Bay Biz</strong> — Documento confidencial</p>
+    <p>Una buena inversión comienza sintiéndote seguro al tomarla.</p>
+</div>
+
+<button class="print-btn" onclick="window.print()">
+    🖨️ Imprimir / PDF
+</button>
+
+<script>
+    // Rating selection
+    function selectRating(btn, value) {
+        const buttons = btn.parentElement.querySelectorAll('.rating-btn');
+        buttons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        // Guardar valor en input oculto
+        let hiddenInput = btn.parentElement.querySelector('input[type="hidden"]');
+        if (!hiddenInput) {
+            hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = btn.parentElement.dataset.name || 'rating';
+            btn.parentElement.appendChild(hiddenInput);
+        }
+        hiddenInput.value = value;
+    }
+
+    // Checkbox styling
+    document.querySelectorAll('.checkbox-item input, .radio-item input').forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.checked) {
+                this.parentElement.classList.add('checked');
+            } else {
+                this.parentElement.classList.remove('checked');
+            }
+        });
+    });
+
+    // Form submission
+    const form = document.getElementById('relevamiento-form');
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Enviando...';
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form)
+            });
+
+            if (response.ok) {
+                // Mostrar mensaje de éxito
+                const successDiv = document.createElement('div');
+                successDiv.innerHTML = `
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(13,33,55,0.95); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+                        <div style="background: white; padding: 60px; border-radius: 20px; text-align: center; max-width: 500px;">
+                            <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+                            <h2 style="color: #0d2137; margin-bottom: 15px;">¡Relevamiento enviado!</h2>
+                            <p style="color: #8896a6; margin-bottom: 30px;">Gracias por completar el formulario. Nos pondremos en contacto pronto.</p>
+                            <button onclick="location.reload()" style="background: #f5b800; color: #0d2137; border: none; padding: 15px 40px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer;">Cerrar</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(successDiv);
+            } else {
+                throw new Error('Error en el envío');
+            }
+        } catch (error) {
+            alert('Hubo un error al enviar. Por favor intentá de nuevo.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>
